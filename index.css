@@ -1,0 +1,72 @@
+html, body{
+    height: 100%;
+    margin: 0;
+
+    h1 {
+        font-size: xxx-large;
+        font-weight: bold;
+    }
+}
+
+header {
+    margin: 2rem 1rem 2rem 1rem;
+    max-width: 1020px;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 2rem 1rem 2rem 1rem;
+    max-width: 1020px;
+    min-height: 100vh;
+
+
+    ul {
+        margin: 0 0 1rem 2rem;
+    }
+    a {
+        color: #000;
+        text-decoration: none;
+        font-size: medium;
+    }
+    a:hover {
+        color: #000;
+        text-decoration: underline;
+        font-size: medium;
+    }
+    h2 {
+        margin: 1rem 1rem 1rem 1rem;
+        font-size: x-large;
+        font-weight: bold;
+    }
+    p {
+        margin: 1rem 1rem 1rem 3rem;/* บน ขาว ล่าง ซ้าย */
+        font-size: medium;
+    }
+}
+
+article {
+    margin: 0 0 1rem 0;
+}
+
+footer {
+    margin-top: auto;
+    padding: 1rem 1rem 2rem 1rem;
+    background-color: #18171C;
+    color: #ffffff;
+
+    p {
+        font-size: smaller;
+    }
+}
+
+.my_img {
+    margin: 1rem 1rem 1rem 1rem;
+    max-width: 400px;
+    max-height: 300px;
+}
+
+.footer-credit {
+    margin: 2rem 0 0 0;
+}
