@@ -1,72 +1,100 @@
-html, body{
-    height: 100%;
-    margin: 0;
-
-    h1 {
-        font-size: xxx-large;
-        font-weight: bold;
-    }
+/* ==================== Base Styles ==================== */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-header {
-    margin: 2rem 1rem 2rem 1rem;
-    max-width: 1020px;
+body a:hover {
+    color: #265bfc;
 }
 
-section {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin: 2rem 1rem 2rem 1rem;
-    max-width: 1020px;
-    min-height: 100vh;
-
-
-    ul {
-        margin: 0 0 1rem 2rem;
-    }
-    a {
-        color: #000;
-        text-decoration: none;
-        font-size: medium;
-    }
-    a:hover {
-        color: #000;
-        text-decoration: underline;
-        font-size: medium;
-    }
-    h2 {
-        margin: 1rem 1rem 1rem 1rem;
-        font-size: x-large;
-        font-weight: bold;
-    }
-    p {
-        margin: 1rem 1rem 1rem 3rem;/* บน ขาว ล่าง ซ้าย */
-        font-size: medium;
-    }
+/* ==================== Dark Mode Overrides ==================== */
+body.dark-mode {
+    background-color: #111827;
+    color: #f3f4f6;
 }
 
-article {
-    margin: 0 0 1rem 0;
+body.dark-mode header {
+    background-color: #1f2937;
+    border-color: #374151;
 }
 
-footer {
-    margin-top: auto;
-    padding: 1rem 1rem 2rem 1rem;
-    background-color: #18171C;
-    color: #ffffff;
-
-    p {
-        font-size: smaller;
-    }
+/* เฉพาะ div ที่มี bg-gray-50 เท่านั้นที่จะได้สีเทาในโหมดมืด */
+body.dark-mode .bg-gray-50 {
+    background-color: #1f2937;
+    border-color: #374151;
 }
 
-.my_img {
-    margin: 1rem 1rem 1rem 1rem;
-    max-width: 400px;
-    max-height: 300px;
+body.dark-mode h1,
+body.dark-mode h2 {
+    color: #f3f4f6;
 }
 
-.footer-credit {
-    margin: 2rem 0 0 0;
+body.dark-mode p,
+body.dark-mode span,
+body.dark-mode li {
+    color: #f3f4f6;
+}
+
+body.dark-mode a {
+    color: #f3f4f6;
+}
+
+body.dark-mode a:hover {
+    color: #60a5fa;
+}
+
+body.dark-mode .border-gray-300 {
+    border-color: #374151;
+}
+
+/* ==================== Smooth Transitions ==================== */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* ==================== Button Styles ==================== */
+button {
+    cursor: pointer;
+    user-select: none;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* ==================== Responsive Images ==================== */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ==================== Custom Scrollbar (Optional) ==================== */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+body.dark-mode ::-webkit-scrollbar-track {
+    background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb {
+    background: #4b5563;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
 }
