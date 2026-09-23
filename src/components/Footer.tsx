@@ -7,7 +7,7 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="mt-auto border-t border-gray-100 dark:border-gray-900">
+    <footer className="mt-auto">
       <div className="mx-auto max-w-5xl px-6 py-8">
         <p className="text-center text-sm text-gray-400 dark:text-gray-600">
           Copyright © {year} {personal.name[lang]} {t('footerRights')}

@@ -32,7 +32,7 @@ export default function Header() {
         {/* คลิกแล้วเด้งกลับไปบนสุดของหน้า (section id="top" อยู่ใน Hero.tsx)
             logo badge สี่เหลี่ยมมนใส่ตัวย่อชื่อ (personal.initials) สีเดียวกับ favicon เพื่อความสอดคล้องของแบรนด์ */}
         <a href="#top" className="flex items-center gap-2.5">
-          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-indigo-600 text-sm font-bold text-white">
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-linear-to-br from-indigo-600 to-violet-600 text-sm font-bold text-white">
             {personal.initials}
           </span>
           <span className="text-base font-semibold tracking-tight text-gray-900 dark:text-gray-100">
@@ -43,8 +43,14 @@ export default function Header() {
         {/* เมนูเวอร์ชันจอใหญ่ - ซ่อนไว้บนจอมือถือ (hidden) แล้วโชว์ตอนจอ >= md ด้วย md:flex */}
         <nav className="hidden gap-8 text-sm text-gray-600 md:flex dark:text-gray-400">
           {navItems.map((item) => (
-            <a key={item.href} href={item.href} className="transition-colors hover:text-gray-900 dark:hover:text-gray-100">
+            <a
+              key={item.href}
+              href={item.href}
+              className="group relative py-1 transition-colors hover:text-gray-900 dark:hover:text-gray-100"
+            >
               {item.label}
+              {/* เส้นใต้ลิงก์ที่ค่อยๆ กางออกจากตรงกลางตอน hover แทนแค่เปลี่ยนสีเฉยๆ */}
+              <span className="absolute inset-x-0 -bottom-0.5 h-px scale-x-0 bg-indigo-500 transition-transform duration-200 ease-out group-hover:scale-x-100 dark:bg-indigo-400" />
             </a>
           ))}
         </nav>
@@ -72,7 +78,7 @@ export default function Header() {
               ซ่อนบนจอเล็กมาก (ให้ hamburger ดูแลแทน) โชว์ตั้งแต่จอ sm ขึ้นไป */}
           <a
             href="#contact"
-            className="hidden rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-indigo-700 sm:inline-block"
+            className="hidden rounded-md bg-linear-to-r from-indigo-600 to-violet-600 px-4 py-2 text-sm font-medium text-white transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-indigo-500/30 active:translate-y-0 sm:inline-block"
           >
             {t('navContact')}
           </a>
@@ -93,8 +99,14 @@ export default function Header() {
       {/* เมนูมือถือแบบ dropdown - ไม่กินพื้นที่จอเลยตอนปิด (mobileOpen === false ไม่ render อะไรออกมาเลย)
           พอกดเมนูค่อยโผล่ลงมาเป็นแถบใต้ header, กดลิงก์ไหนก็ปิดเมนูอัตโนมัติ (onClick ปิด mobileOpen)
           รวม Contact ไว้ในนี้ด้วยสำหรับจอที่แคบมากจนปุ่ม Contact หลักถูกซ่อน (ต่ำกว่า sm) */}
-      {mobileOpen && (
-        <nav className="flex flex-col gap-0.5 border-t border-gray-200 px-4 py-3 text-sm text-gray-600 md:hidden dark:border-gray-800 dark:text-gray-400">
+      {/* grid-rows 0fr -> 1fr คือเทคนิคทำ "height: auto" ให้ animate ได้ (height ธรรมดา animate ไม่ได้ถ้าปลายทางเป็น auto)
+          เมนูอยู่ใน DOM ตลอด แค่ยุบ/ขยายด้วย transition แทนการ mount/unmount แบบเดิมที่เด้งโผล่ทันที ไม่มีอนิเมชั่น */}
+      <div
+        className={`grid overflow-hidden transition-[grid-template-rows] duration-300 ease-out md:hidden ${
+          mobileOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+        }`}
+      >
+        <nav className="flex min-h-0 flex-col gap-0.5 border-t border-gray-200 px-4 py-3 text-sm text-gray-600 dark:border-gray-800 dark:text-gray-400">
           {navItems.map((item) => (
             <a
               key={item.href}
@@ -113,7 +125,7 @@ export default function Header() {
             {t('navContact')}
           </a>
         </nav>
-      )}
+      </div>
     </header>
   )
 }

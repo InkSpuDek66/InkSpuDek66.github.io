@@ -1,4 +1,5 @@
 import { useLanguage } from '../context/useLanguage'
+import { useInView } from '../hooks/useInView'
 import { educationHistory } from '../data/profile'
 
 // Section "ประวัติการศึกษา" - แสดงเป็นการ์ด 2 คอลัมน์ (มัธยม/มหาวิทยาลัย) เรียงจากล่าสุดไปเก่าสุด
@@ -6,17 +7,29 @@ import { educationHistory } from '../data/profile'
 // แยกออกมาเป็น section ของตัวเอง (ไม่รวมกับ Experience.tsx เหมือนก่อนหน้า) ตามแบบที่อ้างอิงมา
 export default function Education() {
   const { lang, t } = useLanguage()
+  const { ref, inView } = useInView<HTMLDivElement>()
 
   return (
-    <section id="education" className="border-t border-gray-100 dark:border-gray-900">
-      <div className="mx-auto max-w-5xl px-6 py-20 sm:py-24">
-        <h2 className="mb-10 text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
+    <section id="education" className="bg-indigo-50/50 dark:bg-indigo-500/4">
+      <div
+        ref={ref}
+        className={`mx-auto max-w-5xl px-6 py-14 transition-opacity duration-700 ease-out sm:py-20 ${
+          inView ? 'opacity-100' : 'opacity-0'
+        }`}
+      >
+        <h2 className="mb-8 text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
           {t('educationTitle')}
         </h2>
 
         <div className="grid gap-4 sm:grid-cols-2">
-          {educationHistory.map((item) => (
-            <div key={item.id} className="rounded-xl border border-gray-200 p-5 dark:border-gray-800">
+          {educationHistory.map((item, index) => (
+            <div
+              key={item.id}
+              style={{ transitionDelay: inView ? `${index * 70}ms` : '0ms' }}
+              className={`rounded-xl border border-gray-200 bg-white p-5 transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-md dark:border-gray-800 dark:bg-gray-900 dark:hover:shadow-black/30 ${
+                inView ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+              }`}
+            >
               <div className="flex items-start gap-3">
                 {/* โลโก้สถานศึกษา - ถ้ามีไฟล์จริงก็แสดงรูป ถ้าไม่มีก็ fallback เป็น badge ตัวย่อ (เช่น "SPU")
                     กันไม่ให้การ์ดดูขาดๆ หายๆ ตอนยังไม่มีโลโก้ */}

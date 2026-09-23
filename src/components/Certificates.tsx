@@ -1,5 +1,6 @@
 import { Award, ExternalLink } from 'lucide-react'
 import { useLanguage } from '../context/useLanguage'
+import { useInView } from '../hooks/useInView'
 import { certificates, certificatesProfile } from '../data/profile'
 
 // Section "ใบเซอร์ / เกียรติบัตร" - ถ้า certificates array ใน data/profile.ts ว่างเปล่า
@@ -7,16 +8,22 @@ import { certificates, certificatesProfile } from '../data/profile'
 // ตอนนี้มีข้อมูล badge จริงจาก Microsoft Learn แล้ว เลยขึ้นแสดงตามปกติ
 export default function Certificates() {
   const { lang, t } = useLanguage()
+  const { ref, inView } = useInView<HTMLDivElement>()
 
   if (certificates.length === 0) {
     return null
   }
 
   return (
-    <section id="certificates" className="border-t border-gray-100 dark:border-gray-900">
-      <div className="mx-auto max-w-5xl px-6 py-20 sm:py-24">
+    <section id="certificates" className="bg-indigo-50/50 dark:bg-indigo-500/4">
+      <div
+        ref={ref}
+        className={`mx-auto max-w-5xl px-6 py-14 transition-opacity duration-700 ease-out sm:py-20 ${
+          inView ? 'opacity-100' : 'opacity-0'
+        }`}
+      >
         {/* หัวข้อ + ลิงก์ไปหน้าโปรไฟล์ Microsoft Learn ตัวจริง อยู่แถวเดียวกัน (ชิดซ้าย/ชิดขวา) */}
-        <div className="mb-10 flex flex-wrap items-center justify-between gap-3">
+        <div className="mb-8 flex flex-wrap items-center justify-between gap-3">
           <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
             {t('certificatesTitle')}
           </h2>
@@ -32,8 +39,14 @@ export default function Certificates() {
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {certificates.map((cert) => (
-            <div key={cert.id} className="flex gap-3 rounded-xl border border-gray-200 p-4 dark:border-gray-800">
+          {certificates.map((cert, index) => (
+            <div
+              key={cert.id}
+              style={{ transitionDelay: inView ? `${index * 70}ms` : '0ms' }}
+              className={`flex gap-3 rounded-xl border border-gray-200 bg-white p-4 transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-md dark:border-gray-800 dark:bg-gray-900 dark:hover:shadow-black/30 ${
+                inView ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+              }`}
+            >
               {/* ถ้ามีรูปใบเซอร์จริงก็แสดง ถ้าไม่มีก็ใช้ badge ไอคอนเหรียญรางวัลแทน */}
               {cert.image ? (
                 <img src={cert.image} alt={cert.name[lang]} className="h-10 w-10 shrink-0 rounded-md object-cover" />
