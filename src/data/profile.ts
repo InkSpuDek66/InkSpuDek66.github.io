@@ -198,10 +198,10 @@ export const projects: Project[] = [
       en: 'A complaint-reporting system for higher-education institutions, supporting image uploads, status workflow (pending → in progress → done/cancelled), comments and status history, plus search and filtering.',
     },
     role: {
-      th: 'รับผิดชอบโมดูลรับเรื่องร้องเรียน ฟังก์ชัน CRUD ระบบอัปโหลดรูปภาพ และการจัดการสถานะ รวมถึงเขียน automated test ด้วย Mocha/Chai',
-      en: 'Owned the complaint-intake module: CRUD functionality, image upload, and status management, plus wrote automated tests with Mocha/Chai.',
+      th: 'รับผิดชอบตำแหน่ง Person 2 (Complaint System) ดูแลระบบรับเรื่องร้องเรียนทั้งหมด ตั้งแต่ฟังก์ชัน CRUD, ระบบอัปโหลดรูปภาพ, workflow เปลี่ยนสถานะ (รอดำเนินการ → กำลังดำเนินการ → เสร็จสิ้น/ยกเลิก), ระบบคอมเมนต์และประวัติการเปลี่ยนแปลง, ค้นหา/กรองข้อมูล และเขียนชุดทดสอบอัตโนมัติ (Mocha/Chai/Supertest) ให้ครบทั้งโปรเจกต์',
+      en: 'Served as Person 2 (Complaint System), owning the full complaint module end-to-end: CRUD functionality, image upload, status workflow (pending → in progress → resolved/cancelled), comments & history, and search/filtering. Also wrote the entire automated test suite (Mocha/Chai/Supertest) for the whole project.',
     },
-    tech: ['React', 'Node.js', 'Express.js', 'MongoDB', 'JWT'],
+    tech: ['React', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'Mocha', 'Chai', 'Supertest'],
     github: 'https://github.com/InkSpuDek66/MyUsafe-ReportProject.git',
     image: complaintSystemShot,
   },

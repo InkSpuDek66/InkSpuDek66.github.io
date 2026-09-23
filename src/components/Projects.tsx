@@ -1,4 +1,4 @@
-import { ChevronDown, Code2, ExternalLink } from 'lucide-react'
+import { ChevronDown, Code2, ExternalLink, Star } from 'lucide-react'
 import { useState } from 'react'
 import { FaGithub } from 'react-icons/fa'
 import { useLanguage } from '../context/useLanguage'
@@ -82,7 +82,7 @@ function ProjectMedia({ project }: { project: Project }) {
 
 // การ์ดโปรเจกต์เดียว - เลย์เอาต์แนวนอน: รูปอยู่ซ้าย (md:w-2/5), เนื้อหาอยู่ขวา (md:w-3/5)
 // ใช้กับทุกโปรเจกต์เหมือนกัน (ไม่แยก component สำหรับ featured อีกต่อไป) ต่างกันแค่ตรงที่
-// โปรเจกต์ featured จะมี badge สีและ field "ผลลัพธ์" เพิ่มมา
+// โปรเจกต์ featured จะมีไอคอนดาว (hover ดู tooltip) หน้าชื่อโปรเจกต์เพิ่มมา
 function ProjectCard({ project }: { project: Project }) {
   const { lang, t } = useLanguage()
   // การ์ดแต่ละใบสังเกตการสกรอลล์ของตัวเอง (แยกจาก section) เพราะรายการโปรเจกต์เรียงต่อกันยาว
@@ -119,12 +119,20 @@ function ProjectCard({ project }: { project: Project }) {
       </div>
 
       <div className="p-6 sm:p-8 md:w-3/5">
-        {project.featured && (
-          <span className="mb-3 inline-block rounded-md bg-linear-to-r from-indigo-600 to-violet-600 px-2.5 py-1 text-xs font-semibold text-white">
-            {t('featuredBadge')}
-          </span>
-        )}
-        <h3 className="text-lg font-semibold tracking-tight text-slate-900 dark:text-slate-100">{project.name}</h3>
+        <h3 className="flex items-center gap-1.5 text-lg font-semibold tracking-tight text-slate-900 dark:text-slate-100">
+          {project.featured && (
+            // ไอคอนดาว + tooltip โผล่ตอน hover แทนป้าย "Featured Project" แบบเดิมที่แปะถาวรอยู่บนการ์ด
+            // ให้ความหมายเดิมแต่ไม่แย่งพื้นที่/ไม่ทำให้การ์ดดูรก
+            <span className="group relative inline-flex shrink-0">
+              <Star size={16} className="fill-indigo-500 text-indigo-500 dark:fill-indigo-400 dark:text-indigo-400" />
+              <span className="pointer-events-none absolute left-1/2 top-full z-10 mt-2 -translate-x-1/2 rounded-md bg-slate-900 px-2 py-1 text-xs font-medium whitespace-nowrap text-white opacity-0 shadow-lg transition-opacity duration-150 group-hover:opacity-100 dark:bg-slate-700">
+                <span className="absolute bottom-full left-1/2 -translate-x-1/2 border-4 border-transparent border-b-slate-900 dark:border-b-slate-700" />
+                {t('featuredBadge')}
+              </span>
+            </span>
+          )}
+          {project.name}
+        </h3>
         <p className="mt-1 text-sm text-gray-500 dark:text-gray-500">{project.meta[lang]}</p>
 
         {hasDetails && (
@@ -174,7 +182,7 @@ function ProjectCard({ project }: { project: Project }) {
 
 // Section "ผลงานและโปรเจกต์" - แสดงตามลำดับที่เขียนไว้ใน projects array ของ data/profile.ts ตรงๆ
 // (array นั้นเรียงจากโปรเจกต์ล่าสุดไปเก่าสุดอยู่แล้ว ไม่ได้ sort ซ้ำตรงนี้)
-// featured ใช้แค่ทำ badge สีเด่นๆ ไม่ได้มีผลกับลำดับการแสดงผล
+// featured ใช้แค่ทำไอคอนดาวหน้าชื่อ ไม่ได้มีผลกับลำดับการแสดงผล
 export default function Projects() {
   const { t } = useLanguage()
   const { ref, inView } = useInView<HTMLDivElement>()
