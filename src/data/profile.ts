@@ -4,6 +4,9 @@
 // แก้ทักษะ, เปลี่ยนอีเมล ฯลฯ) แก้ที่ไฟล์นี้ไฟล์เดียวพอ
 
 import highSchoolLogo from '../assets/logo_CW.jpg'
+import csi205Shot from '../assets/CSI205-Frontend_Development_Coursework.png'
+import complaintSystemShot from '../assets/University Complaint Reporting System.png'
+import smartCafeShot from '../assets/Smart Cafe Management System.png'
 import spuLogo from '../assets/new_logo_spu01.png'
 
 // รูปแบบข้อความ 2 ภาษา ใช้ทุกที่ที่มีข้อความยาวๆ ที่ต้องแปล (ต่างจาก UI label ที่อยู่ใน translations.ts)
@@ -146,10 +149,7 @@ export interface Project {
   tech: string[]
   github?: string
   demo?: string
-  // path รูปภาพ/สกรีนช็อตของโปรเจกต์ (เตรียมฟิลด์ไว้ก่อน ยังไม่มีข้อมูลจริง)
-  // วิธีใช้ทีหลัง: เอารูปไปวางไว้ที่ src/assets/projects/ แล้วเพิ่ม
-  //   import smartCafeShot from '../assets/projects/smart-cafe.png'
-  // ไว้บนสุดของไฟล์นี้ แล้วใส่ image: smartCafeShot ในโปรเจกต์ที่ต้องการ
+  // path รูปภาพ/สกรีนช็อตของโปรเจกต์ - import ไฟล์รูปไว้บนสุดของไฟล์นี้ แล้วใส่ image: ตัวแปรนั้นในโปรเจกต์ที่ต้องการ
   // Projects.tsx จะแสดงรูปให้อัตโนมัติทันทีที่มีค่านี้ ไม่ต้องแก้โค้ด component เพิ่ม
   image?: string
 }
@@ -183,6 +183,7 @@ export const projects: Project[] = [
     },
     tech: ['ASP.NET Core (C#)', 'MySQL', 'SignalR', 'Session Auth'],
     github: 'https://github.com/InkSpuDek66/smart-cafe-management.git',
+    image: smartCafeShot,
   },
   {
     id: 'complaint-system',
@@ -202,6 +203,7 @@ export const projects: Project[] = [
     },
     tech: ['React', 'Node.js', 'Express.js', 'MongoDB', 'JWT'],
     github: 'https://github.com/InkSpuDek66/MyUsafe-ReportProject.git',
+    image: complaintSystemShot,
   },
   {
     id: 'csi205-frontend',
@@ -217,6 +219,7 @@ export const projects: Project[] = [
     },
     tech: ['HTML', 'CSS', 'JavaScript'],
     demo: 'https://inkspudek66.github.io/_mutipages', // โปรเจกต์นี้ไม่มี GitHub แยก มีแต่หน้า demo
+    image: csi205Shot,
   },
 ]
 

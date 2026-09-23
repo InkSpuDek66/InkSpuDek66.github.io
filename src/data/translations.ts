@@ -39,8 +39,11 @@ export const ui = {
     activitiesTitle: 'กิจกรรม',
     hobbiesTitle: 'งานอดิเรก',
     // หัวข้อ Certificates (แสดงเฉพาะตอนมีข้อมูลใน certificates array ของ profile.ts)
-    certificatesTitle: 'ใบเซอร์ / เกียรติบัตร',
+    certificatesTitle: 'ใบประกาศนียบัตร',
     certificateView: 'ดูใบรับรอง',
+    // ใช้ร่วมกันหลาย section (ใบประกาศนียบัตร, การ์ดโปรเจกต์) เลยตั้งชื่อ key แบบกลางๆ ไม่ผูกกับ section ใดเป็นการเฉพาะ
+    showMore: 'ดูเพิ่มเติม',
+    showLess: 'แสดงน้อยลง',
     // หัวข้อย่อยใน Projects (การ์ดโปรเจกต์เด่น)
     projectsTitle: 'ผลงานและโปรเจกต์',
     featuredBadge: 'Featured Project',
@@ -87,6 +90,8 @@ export const ui = {
     hobbiesTitle: 'Hobbies',
     certificatesTitle: 'Certificates',
     certificateView: 'View Credential',
+    showMore: 'Show more',
+    showLess: 'Show less',
     projectsTitle: 'Projects',
     featuredBadge: 'Featured Project',
     projectProblem: 'Problem',
