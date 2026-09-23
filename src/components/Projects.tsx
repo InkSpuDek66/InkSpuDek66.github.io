@@ -1,0 +1,161 @@
+import { Code2, ExternalLink } from 'lucide-react'
+import { FaGithub } from 'react-icons/fa'
+import { useLanguage } from '../context/useLanguage'
+import { projects, type Project } from '../data/profile'
+
+// แถวลิงก์ GitHub/Demo ที่ใช้ซ้ำได้ในทุกการ์ด
+// แสดงเฉพาะลิงก์ที่มีข้อมูลจริง (บางโปรเจกต์มีแค่ GitHub, บางอันมีแค่ Demo)
+function ProjectLinks({ project }: { project: Project }) {
+  const { t } = useLanguage()
+  return (
+    <div className="mt-4 flex flex-wrap gap-4 text-sm font-medium">
+      {project.github && (
+        <a
+          href={project.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1.5 text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
+        >
+          <FaGithub size={16} />
+          {t('projectGithub')}
+        </a>
+      )}
+      {project.demo && (
+        <a
+          href={project.demo}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1.5 text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
+        >
+          <ExternalLink size={16} />
+          {t('projectDemo')}
+        </a>
+      )}
+    </div>
+  )
+}
+
+// แถวป้ายเทคโนโลยีที่ใช้ในโปรเจกต์ (React, Node.js, MongoDB, ...) แสดงเป็น pill เล็กๆ ฟอนต์ monospace
+// (ให้ความรู้สึกเหมือน "โค้ด/ชื่อแพ็กเกจ" ตามภาพตัวอย่างที่อ้างอิงมา)
+function TechList({ tech }: { tech: string[] }) {
+  return (
+    <div className="flex flex-wrap gap-1.5">
+      {tech.map((item) => (
+        <span
+          key={item}
+          className="rounded-md border border-gray-200 bg-gray-50 px-2 py-1 font-mono text-xs text-gray-600 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400"
+        >
+          {item}
+        </span>
+      ))}
+    </div>
+  )
+}
+
+// พื้นที่รูปของการ์ด - ถ้ามี project.image จริงก็แสดงรูป ถ้ายังไม่มี (ยังไม่ได้ใส่สกรีนช็อตจริง)
+// ให้ใช้กล่อง gradient สี indigo อ่อนๆ พร้อมไอคอนแทน กันไม่ให้การ์ดดูมีช่องว่างโหว่ๆ
+function ProjectMedia({ project }: { project: Project }) {
+  if (project.image) {
+    return (
+      <img
+        src={project.image}
+        alt={project.name}
+        className="h-56 w-full object-cover md:h-full"
+      />
+    )
+  }
+  return (
+    <div className="flex h-56 w-full items-center justify-center bg-linear-to-br from-indigo-50 to-indigo-100 md:h-full dark:from-indigo-950 dark:to-gray-900">
+      <Code2 size={40} className="text-indigo-300 dark:text-indigo-700" />
+    </div>
+  )
+}
+
+// การ์ดโปรเจกต์เดียว - เลย์เอาต์แนวนอน: รูป/placeholder อยู่ซ้าย (md:w-2/5), เนื้อหาอยู่ขวา
+// ใช้กับทุกโปรเจกต์เหมือนกัน (ไม่แยก component สำหรับ featured อีกต่อไป) ต่างกันแค่ตรงที่
+// โปรเจกต์ featured จะมี badge สีและ field "ผลลัพธ์" เพิ่มมา
+function ProjectCard({ project }: { project: Project }) {
+  const { lang, t } = useLanguage()
+
+  return (
+    <div className="overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 md:flex">
+      <div className="shrink-0 md:w-2/5">
+        <ProjectMedia project={project} />
+      </div>
+
+      <div className="p-6 sm:p-8 md:w-3/5">
+        {project.featured && (
+          <span className="mb-3 inline-block rounded-md bg-indigo-50 px-2.5 py-1 text-xs font-semibold text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300">
+            {t('featuredBadge')}
+          </span>
+        )}
+        <h3 className="text-lg font-semibold tracking-tight text-slate-900 dark:text-slate-100">{project.name}</h3>
+        <p className="mt-1 text-sm text-gray-500 dark:text-gray-500">{project.meta[lang]}</p>
+
+        {/* แต่ละ field (problem/solution/role/outcome/description) เป็น optional ในข้อมูล
+            เลยเช็ค && ก่อนทุกอัน กันไม่ให้ขึ้นหัวข้อเปล่าๆ ถ้าโปรเจกต์ไหนไม่มีข้อมูลนั้น */}
+        <div className="mt-4 grid gap-4 sm:grid-cols-2">
+          {project.problem && (
+            <div>
+              <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500">{t('projectProblem')}</h4>
+              <p className="mt-1 text-sm leading-relaxed text-gray-600 dark:text-gray-400">{project.problem[lang]}</p>
+            </div>
+          )}
+          {project.solution && (
+            <div>
+              <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500">{t('projectSolution')}</h4>
+              <p className="mt-1 text-sm leading-relaxed text-gray-600 dark:text-gray-400">{project.solution[lang]}</p>
+            </div>
+          )}
+          {project.role && (
+            <div>
+              <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500">{t('projectRole')}</h4>
+              <p className="mt-1 text-sm leading-relaxed text-gray-600 dark:text-gray-400">{project.role[lang]}</p>
+            </div>
+          )}
+          {project.outcome && (
+            <div>
+              <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500">{t('projectOutcome')}</h4>
+              <p className="mt-1 text-sm leading-relaxed text-gray-600 dark:text-gray-400">{project.outcome[lang]}</p>
+            </div>
+          )}
+          {/* description ใช้แทน problem/solution สำหรับโปรเจกต์ที่ไม่มีข้อมูลละเอียดขนาดนั้น */}
+          {project.description && !project.problem && (
+            <div className="sm:col-span-2">
+              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">{project.description[lang]}</p>
+            </div>
+          )}
+        </div>
+
+        <div className="mt-4">
+          <TechList tech={project.tech} />
+        </div>
+
+        <ProjectLinks project={project} />
+      </div>
+    </div>
+  )
+}
+
+// Section "ผลงานและโปรเจกต์" - แสดงตามลำดับที่เขียนไว้ใน projects array ของ data/profile.ts ตรงๆ
+// (array นั้นเรียงจากโปรเจกต์ล่าสุดไปเก่าสุดอยู่แล้ว ไม่ได้ sort ซ้ำตรงนี้)
+// featured ใช้แค่ทำ badge สีเด่นๆ ไม่ได้มีผลกับลำดับการแสดงผล
+export default function Projects() {
+  const { t } = useLanguage()
+
+  return (
+    <section id="projects" className="border-t border-gray-100 dark:border-gray-900">
+      <div className="mx-auto max-w-5xl px-6 py-20 sm:py-24">
+        <h2 className="mb-10 text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
+          {t('projectsTitle')}
+        </h2>
+
+        <div className="space-y-6">
+          {projects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

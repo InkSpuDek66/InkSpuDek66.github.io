@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./index.css">
+    <title>Portfolio - Saphondanai Chueachan</title>
+</head>
+
+<body class="bg-white text-gray-900 transition-colors duration-300">
+
+    <!-- Header -->
+    <header class="border-b border-gray-300 bg-gray-50 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-4 py-6 flex justify-between items-center flex-wrap gap-4">
+            <h1 class="text-4xl font-serif text-gray-900" data-lang="portfolio">Portfolio</h1>
+            <div class="flex gap-3">
+                <!-- Language Toggle -->
+                <button id="languageToggle"
+                    class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded text-sm font-medium transition-colors">
+                    EN
+                </button>
+                <!-- Theme Toggle -->
+                <button id="themeToggle"
+                    class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded text-sm font-medium transition-colors">
+                    🌙
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 py-8">
+
+        <!-- Introduction Section -->
+        <section class="mb-12">
+            <div class="bg-gray-50 border border-gray-300 rounded p-6 mb-6 transition-colors duration-300">
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="flex-shrink-0">
+                        <img src="./img&vdo/me.jpg" class="w-48 h-48 object-cover border border-gray-300 rounded"
+                            alt="Saphondanai Chueachan">
+                    </div>
+                    <div class="flex-grow">
+                        <h2 class="text-2xl font-serif border-b border-gray-300 pb-2 mb-4 transition-colors duration-300"
+                            data-lang="introduce">แนะนำตัว</h2>
+                        <div class="space-y-1 text-gray-800 leading-relaxed">
+                            <p>
+                                <span class="font-semibold" data-lang="name">ชื่อ</span>:
+                                <span data-lang="name_me">นายสพณดณัย เชื้อชาญ</span>
+                            </p>
+                            <p>
+                                <span class="font-semibold" data-lang="nickname">ชื่อเล่น</span>:
+                                <span data-lang="nickname_me">อิง</span>
+                            </p>
+                            <p>
+                                <span class="font-semibold" data-lang="age">อายุ</span>:
+                                <span id="age">20</span> <span data-lang="years">ปี</span>
+                            </p>
+                            <p>
+                                <span class="font-semibold" data-lang="university">สถานศึกษา</span>:
+                                <span data-lang="university_name">มหาวิทยาลัยศรีปทุม</span>
+                            </p>
+                            <p>
+                                <span class="font-semibold" data-lang="faculty">คณะ</span>:
+                                <span data-lang="faculty_name">เทคโนโลยีสารสนเทศ</span>
+                            </p>
+                            <p>
+                                <span class="font-semibold" data-lang="major">สาขา</span>:
+                                <span data-lang="major_name">วิทยาการคอมพิวเตอร์และนวัตกรรมการพัฒนาซอฟต์แวร์</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- My Work Section -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-serif border-b border-gray-300 pb-2 mb-4 transition-colors duration-300"
+                data-lang="mywork">ผลงาน</h2>
+            <div class="pl-6">
+                <ul class="list-disc list-inside space-y-2">
+                    <li>
+                        <a href="https://inkspudek66.github.io/_mutipages"
+                            class="hover:underline transition-colors duration-300" target="_blank">
+                            CSI205: <samp data-lang="frontend">การพัฒนาโปรแกรมส่วนหน้า</samp>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-serif border-b border-gray-300 pb-2 mb-4 transition-colors duration-300"
+                data-lang="contact">ติดต่อ</h2>
+            <div class="pl-6 space-y-2 text-gray-800">
+                <p>
+                    <a href="https://www.facebook.com/Inkekun?mibextid=ZbWKwL"
+                        class="hover:underline transition-colors duration-300" target="_blank">
+                        Facebook: ชื่ออิง ง.
+                    </a>
+                </p>
+                <p>
+                    <a href="https://instagram.com/ink_kun_?igshid=OGQ5ZDc2ODk2ZA=="
+                        class="hover:underline transition-colors duration-300" target="_blank">
+                        Instagram: ink_kun_
+                    </a>
+                </p>
+                <p >Gmail: saphondanai.chu@spumail.net</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 mt-auto transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-4 py-6">
+            <p class="text-center text-sm text-gray-400">
+                Copyright © 2024 Saphondanai Chueachan All rights reserved
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="./script.js"></script>
+</body>
+
+</html>
