@@ -1,4 +1,4 @@
-import { Code2, Database, Languages as LanguagesIcon, Server, TestTube2, Wrench } from 'lucide-react'
+import { Bot, Code2, Database, Languages as LanguagesIcon, Server, TestTube2, Wrench } from 'lucide-react'
 import type { ComponentType } from 'react'
 import { skillGroups } from './profile'
 
@@ -10,6 +10,7 @@ import { skillGroups } from './profile'
 export const iconByCategory: Record<string, ComponentType<{ size?: number; className?: string }>> = {
   'Front-end': Code2,
   'Back-end': Server,
+  'AI & Automation': Bot,
   Databases: Database,
   Tools: Wrench,
   Testing: TestTube2,
@@ -36,6 +37,12 @@ export const categoryStyles: Record<string, CategoryStyle> = {
     iconBg: 'bg-emerald-100 dark:bg-emerald-950/60',
     pill: 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-300',
     hoverBorder: 'hover:border-emerald-300 dark:hover:border-emerald-800',
+  },
+  'AI & Automation': {
+    icon: 'text-indigo-600 dark:text-indigo-400',
+    iconBg: 'bg-indigo-100 dark:bg-indigo-950/60',
+    pill: 'border-indigo-200 bg-indigo-50 text-indigo-700 dark:border-indigo-900 dark:bg-indigo-950/40 dark:text-indigo-300',
+    hoverBorder: 'hover:border-indigo-300 dark:hover:border-indigo-800',
   },
   Databases: {
     icon: 'text-amber-600 dark:text-amber-400',
