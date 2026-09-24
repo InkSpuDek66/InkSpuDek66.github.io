@@ -22,8 +22,8 @@ export const personal = {
   headline: { th: 'Full-Stack Developer', en: 'Full-Stack Developer' } satisfies Bilingual,
   // บรรทัดเป้าหมายงานสั้นๆ ใต้ headline ใน Hero - บอก recruiter ทันทีว่าหางานแบบไหน พร้อมเริ่มเมื่อไหร่
   availability: {
-    th: 'กำลังมองหางานสหกิจ (co-op) อย่างน้อย 4 เดือน เริ่มได้ก่อน ม.ค. 2570 · กรุงเทพฯ',
-    en: 'Seeking a 4+ month co-op internship · available before Jan 2027 · Bangkok',
+    th: 'มองหางานสหกิจ (co-op) เริ่มช่วงปลาย ธ.ค. 2569 – ม.ค. 2570 · อย่างน้อย 4 เดือน · กรุงเทพฯ',
+    en: 'Seeking a co-op internship · start late Dec 2026 – Jan 2027 · 4+ months · Bangkok',
   } satisfies Bilingual,
   birthDate: '2005-02-18', // ใช้คำนวณอายุแบบสดๆ ผ่าน hooks/useAge.ts (ดูใน About.tsx)
   intro: {
@@ -85,8 +85,8 @@ export const about = {
   // ประโยคเน้นจุดแข็งที่สุด (ประสบการณ์ TA) แสดงเป็นแถบ highlight ใต้ intro ใน About.tsx
   // เพื่อดันขึ้นมาให้เห็นตั้งแต่จอแรก แทนที่จะรอให้เลื่อนไปถึง section ประสบการณ์
   highlight: {
-    th: 'เคยเป็นผู้ช่วยสอน (TA) ให้คณะ — รีวิวโค้ดและช่วยดีบั๊กให้นักศึกษากว่า 40 คน ทั้งฝั่ง React และ Node.js',
-    en: 'Former Teaching Assistant — reviewed code and debugged with 40+ students across React and Node.js',
+    th: 'เคยเป็นผู้ช่วยสอน (TA) ให้คณะ — รีวิวโค้ดและช่วยดีบั๊กให้นักศึกษากว่า 150 คน ใน 4 กลุ่มเรียน ทั้งฝั่ง React และ Node.js',
+    en: 'Former Teaching Assistant — reviewed code and debugged with 150+ students across 4 sections, on both React and Node.js',
   } satisfies Bilingual,
   career: {
     th: 'อยากเติบโตในสายงาน Full-Stack Developer ที่ได้ลงมือพัฒนาโปรแกรมตั้งแต่ต้นจนจบ ทั้งฝั่ง Frontend ด้วย React และฝั่ง Backend ด้วย Node.js หรือ ASP.NET Core โดยเฉพาะงานที่ได้แก้ปัญหาจริงให้ผู้ใช้งาน และได้ทำงานร่วมกับทีมที่ใส่ใจคุณภาพของซอฟต์แวร์ นอกจากนี้ยังสนใจต่อยอดไปสาย AI Software Engineer โดยมีประสบการณ์สร้างระบบด้วย RAG, n8n และ Make.com เพื่อนำ AI และระบบอัตโนมัติมาช่วยแก้ปัญหาให้มีประสิทธิภาพมากขึ้น',
@@ -95,8 +95,8 @@ export const about = {
   // เป็น array เพราะจุดแข็งมีได้หลายข้อ - About.tsx จะ .map() แสดงเป็น bullet list
   strengths: [
     {
-      th: 'อธิบายเรื่องเทคนิคให้เข้าใจง่าย — จากประสบการณ์เป็น TA สอนและรีวิวโค้ดให้นักศึกษากว่า 40 คน ทั้ง React และ Node.js',
-      en: 'Explaining technical topics clearly — from TA experience teaching and reviewing code for 40+ students across React and Node.js',
+      th: 'อธิบายเรื่องเทคนิคให้เข้าใจง่าย — จากประสบการณ์เป็น TA สอนและรีวิวโค้ดให้นักศึกษากว่า 150 คน ใน 4 กลุ่มเรียน',
+      en: 'Explaining technical topics clearly — from TA experience teaching and reviewing code for 150+ students across 4 sections',
     },
     {
       th: 'ทำงานครบวงจรด้วยตัวเอง — ออกแบบฐานข้อมูล, backend, frontend และระบบเรียลไทม์จบในโปรเจกต์เดียว',
@@ -242,8 +242,8 @@ export const experience: ExperienceItem[] = [
         en: 'Reviewed code and gave one-on-one debugging guidance on Frontend (React) and Backend (Node.js)',
       },
       {
-        th: 'ดูแลห้องปฏิบัติการและตอบคำถามเชิงเทคนิคแก่นักศึกษากว่า 40 คนต่อรายวิชา',
-        en: 'Managed the lab and answered technical questions for 40+ students per course',
+        th: 'ดูแลห้องปฏิบัติการและตอบคำถามเชิงเทคนิคแก่นักศึกษารวมกว่า 150 คน ใน 4 กลุ่มเรียน',
+        en: 'Managed labs and answered technical questions for 150+ students across 4 sections',
       },
       {
         th: 'ช่วยสอน 3 รายวิชา — CSI101 การโปรแกรมดิจิทัล, CSI205 การพัฒนาโปรแกรมส่วนหน้า (เทอม 1/2568) และ CSI401 การพัฒนาโปรแกรมส่วนหลัง (เทอม 2/2568)',
