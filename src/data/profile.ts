@@ -4,7 +4,6 @@
 // แก้ทักษะ, เปลี่ยนอีเมล ฯลฯ) แก้ที่ไฟล์นี้ไฟล์เดียวพอ
 
 import highSchoolLogo from '../assets/logo_CW.jpg'
-import csi205Shot from '../assets/CSI205-Frontend_Development_Coursework.png'
 import complaintSystemShot from '../assets/University Complaint Reporting System.png'
 import smartCafeShot from '../assets/Smart Cafe Management System.png'
 import spuLogo from '../assets/new_logo_spu01.png'
@@ -21,6 +20,11 @@ export const personal = {
   initials: 'SC', // ตัวย่อชื่อ ใช้ทำ logo badge ใน Header และ favicon
   nickname: { th: 'อิง', en: 'Ink' } satisfies Bilingual,
   headline: { th: 'Full-Stack Developer', en: 'Full-Stack Developer' } satisfies Bilingual,
+  // บรรทัดเป้าหมายงานสั้นๆ ใต้ headline ใน Hero - บอก recruiter ทันทีว่าหางานแบบไหน พร้อมเริ่มเมื่อไหร่
+  availability: {
+    th: 'กำลังมองหางานสหกิจ (co-op) อย่างน้อย 4 เดือน เริ่มได้ก่อน ม.ค. 2570 · กรุงเทพฯ',
+    en: 'Seeking a 4+ month co-op internship · available before Jan 2027 · Bangkok',
+  } satisfies Bilingual,
   birthDate: '2005-02-18', // ใช้คำนวณอายุแบบสดๆ ผ่าน hooks/useAge.ts (ดูใน About.tsx)
   intro: {
     th: 'นักศึกษาชั้นปีที่ 4 สาขาวิทยาการคอมพิวเตอร์และนวัตกรรมการพัฒนาซอฟต์แวร์ มหาวิทยาลัยศรีปทุม มีประสบการณ์พัฒนาเว็บแอปพลิเคชันฟูลสแตกทั้งฝั่ง Node.js/React และ ASP.NET Core จากโปรเจกต์กลุ่มและงานเรียนหลายรูปแบบ เคยทำหน้าที่ผู้ช่วยสอนให้กับคณะ ทำงานร่วมกับผู้อื่นได้ดีและอธิบายเรื่องทางเทคนิคให้เข้าใจง่าย',
@@ -28,7 +32,7 @@ export const personal = {
   } satisfies Bilingual,
   location: { th: 'กรุงเทพมหานคร ประเทศไทย', en: 'Bangkok, Thailand' } satisfies Bilingual,
   email: 'saphondanai.chueachan@gmail.com',
-  phone: '094-251-0936',
+  // เบอร์โทรไม่เก็บในโค้ดเว็บแล้ว (กันหลุดใน JS bundle สาธารณะ) - อยู่เฉพาะในไฟล์ resume PDF
   github: 'https://github.com/InkSpuDek66',
   linkedin: 'https://www.linkedin.com/in/saphondanai-chueachan',
   portfolio: 'https://inkspudek66.github.io',
@@ -78,19 +82,25 @@ export const currentEducation = educationHistory.find((item) => item.id === 'spu
 // (ไม่มี "สิ่งที่สนใจ" ในนี้แล้ว - ย้ายไปเป็น "งานอดิเรก" แยกก้อนอยู่ใน Experience.tsx แทน
 // เพื่อไม่ให้ปนกับเนื้อหาที่เกี่ยวกับสายอาชีพโดยตรง)
 export const about = {
+  // ประโยคเน้นจุดแข็งที่สุด (ประสบการณ์ TA) แสดงเป็นแถบ highlight ใต้ intro ใน About.tsx
+  // เพื่อดันขึ้นมาให้เห็นตั้งแต่จอแรก แทนที่จะรอให้เลื่อนไปถึง section ประสบการณ์
+  highlight: {
+    th: 'เคยเป็นผู้ช่วยสอน (TA) ให้คณะ — รีวิวโค้ดและช่วยดีบั๊กให้นักศึกษากว่า 40 คน ทั้งฝั่ง React และ Node.js',
+    en: 'Former Teaching Assistant — reviewed code and debugged with 40+ students across React and Node.js',
+  } satisfies Bilingual,
   career: {
-    th: 'อยากเติบโตในสายงาน Full-Stack Developer ที่ได้ลงมือพัฒนาโปรแกรมตั้งแต่ต้นจนจบ ทั้งฝั่ง Frontend ด้วย React และฝั่ง Backend ด้วย Node.js หรือ ASP.NET Core โดยเฉพาะงานที่ได้แก้ปัญหาจริงให้ผู้ใช้งาน และได้ทำงานร่วมกับทีมที่ใส่ใจคุณภาพของซอฟต์แวร์',
-    en: 'Looking to grow as a Full-Stack Developer, building software end-to-end — from the frontend with React to the backend with Node.js or ASP.NET Core — ideally solving real problems for real users, alongside a team that cares about software quality.',
+    th: 'อยากเติบโตในสายงาน Full-Stack Developer ที่ได้ลงมือพัฒนาโปรแกรมตั้งแต่ต้นจนจบ ทั้งฝั่ง Frontend ด้วย React และฝั่ง Backend ด้วย Node.js หรือ ASP.NET Core โดยเฉพาะงานที่ได้แก้ปัญหาจริงให้ผู้ใช้งาน และได้ทำงานร่วมกับทีมที่ใส่ใจคุณภาพของซอฟต์แวร์ นอกจากนี้ยังสนใจต่อยอดไปสาย AI Software Engineer โดยมีประสบการณ์สร้างระบบด้วย RAG, n8n และ Make.com เพื่อนำ AI และระบบอัตโนมัติมาช่วยแก้ปัญหาให้มีประสิทธิภาพมากขึ้น',
+    en: 'Looking to grow as a Full-Stack Developer, building software end-to-end — from the frontend with React to the backend with Node.js or ASP.NET Core — ideally solving real problems for real users, alongside a team that cares about software quality. Also interested in growing into an AI Software Engineer role, with hands-on experience building with RAG, n8n, and Make.com to bring AI and automation into solving problems more effectively.',
   } satisfies Bilingual,
   // เป็น array เพราะจุดแข็งมีได้หลายข้อ - About.tsx จะ .map() แสดงเป็น bullet list
   strengths: [
     {
-      th: 'ทำงานร่วมกันเป็นทีมและการสื่อสาร',
-      en: 'Teamwork and communication',
+      th: 'อธิบายเรื่องเทคนิคให้เข้าใจง่าย — จากประสบการณ์เป็น TA สอนและรีวิวโค้ดให้นักศึกษากว่า 40 คน ทั้ง React และ Node.js',
+      en: 'Explaining technical topics clearly — from TA experience teaching and reviewing code for 40+ students across React and Node.js',
     },
     {
-      th: 'การเรียนรู้อย่างต่อเนื่องและความสามารถในการปรับตัว',
-      en: 'Continuous learning and adaptability',
+      th: 'ทำงานครบวงจรด้วยตัวเอง — ออกแบบฐานข้อมูล, backend, frontend และระบบเรียลไทม์จบในโปรเจกต์เดียว',
+      en: 'Owning work end-to-end — from database design to backend, frontend, and realtime features in one project',
     },
   ] satisfies Bilingual[],
 }
@@ -112,6 +122,10 @@ export const skillGroups: SkillGroup[] = [
   {
     title: { th: 'Back-end', en: 'Back-end' },
     items: ['Node.js', 'Express.js', 'ASP.NET Core (C#)', 'RESTful API'],
+  },
+  {
+    title: { th: 'AI และระบบอัตโนมัติ', en: 'AI & Automation' },
+    items: ['RAG', 'n8n', 'Make.com'],
   },
   {
     title: { th: 'ฐานข้อมูล', en: 'Databases' },
@@ -205,22 +219,6 @@ export const projects: Project[] = [
     github: 'https://github.com/InkSpuDek66/MyUsafe-ReportProject.git',
     image: complaintSystemShot,
   },
-  {
-    id: 'csi205-frontend',
-    featured: false,
-    name: 'CSI205: Frontend Development Coursework',
-    meta: {
-      th: 'วิชา CSI205 การพัฒนาโปรแกรมส่วนหน้า',
-      en: 'CSI205 Frontend Development coursework',
-    },
-    description: {
-      th: 'ชุดโปรเจกต์ฝึกฝนการพัฒนาโปรแกรมส่วนหน้าจากรายวิชา CSI205',
-      en: 'A set of frontend-development practice projects from the CSI205 coursework.',
-    },
-    tech: ['HTML', 'CSS', 'JavaScript'],
-    demo: 'https://inkspudek66.github.io/_mutipages', // โปรเจกต์นี้ไม่มี GitHub แยก มีแต่หน้า demo
-    image: csi205Shot,
-  },
 ]
 
 // 1 ตำแหน่งงาน/ประสบการณ์ = ชื่อตำแหน่ง + องค์กร + ช่วงเวลา + รายการหน้าที่ (bullets)
@@ -240,16 +238,16 @@ export const experience: ExperienceItem[] = [
     period: { th: 'ก.ย. 2568 – เม.ย. 2569', en: 'Sep 2025 – Apr 2026' },
     bullets: [
       {
-        th: 'ผู้ช่วยสอนวิชา CSI101 การโปรแกรมดิจิทัล และ CSI205 การพัฒนาโปรแกรมส่วนหน้า (เทอม 1/2568) และวิชา CSI401 การพัฒนาโปรแกรมส่วนหลัง (เทอม 2/2568)',
-        en: 'TA for CSI101 Digital Programming and CSI205 Frontend Development (Semester 1/2025), and CSI401 Backend Development (Semester 2/2025)',
+        th: 'ทำ Code Review และให้คำปรึกษาแก้บั๊กฝั่ง Frontend (React) และ Backend (Node.js) แก่นักศึกษาเป็นรายบุคคล',
+        en: 'Reviewed code and gave one-on-one debugging guidance on Frontend (React) and Backend (Node.js)',
       },
       {
-        th: 'ช่วยเหลืออาจารย์ผู้สอนในการดูแลห้องปฏิบัติการและตอบคำถามเชิงเทคนิคแก่นักศึกษากว่า 40 คน ในแต่ละรายวิชา',
-        en: 'Supported the instructor by managing the lab and answering technical questions for 40+ students per course',
+        th: 'ดูแลห้องปฏิบัติการและตอบคำถามเชิงเทคนิคแก่นักศึกษากว่า 40 คนต่อรายวิชา',
+        en: 'Managed the lab and answered technical questions for 40+ students per course',
       },
       {
-        th: 'ทำ Code Review และให้คำปรึกษาการแก้ไข Bug ฝั่ง Frontend (React) และ Backend (Node.js) แก่นักศึกษาเป็นรายบุคคล',
-        en: 'Performed code reviews and gave one-on-one debugging guidance on Frontend (React) and Backend (Node.js) issues',
+        th: 'ช่วยสอน 3 รายวิชา — CSI101 การโปรแกรมดิจิทัล, CSI205 การพัฒนาโปรแกรมส่วนหน้า (เทอม 1/2568) และ CSI401 การพัฒนาโปรแกรมส่วนหลัง (เทอม 2/2568)',
+        en: 'TA for 3 courses — CSI101 Digital Programming, CSI205 Frontend Development (Sem 1/2025), and CSI401 Backend Development (Sem 2/2025)',
       },
     ],
   },
@@ -289,13 +287,6 @@ export interface Certificate {
 // credentialUrl แต่ละใบเป็นลิงก์ share ตัวจริงจากหน้า achievement ของ Microsoft Learn
 export const certificates: Certificate[] = [
   {
-    id: 'ms-learn-fusion-development-teams',
-    name: { th: 'Transform business software authoring with fusion development teams', en: 'Transform business software authoring with fusion development teams' },
-    issuer: { th: 'Microsoft Learn', en: 'Microsoft Learn' },
-    date: { th: 'ก.ย. 2569', en: 'Sep 2026' },
-    credentialUrl: 'https://learn.microsoft.com/api/achievements/share/en-us/MrSAPHONDANAICHUEACHAN-3029/4LP32RVK?sharingId=8C2B9564903662D',
-  },
-  {
     id: 'ms-learn-intro-machine-learning',
     name: { th: 'Introduction to machine learning concepts', en: 'Introduction to machine learning concepts' },
     issuer: { th: 'Microsoft Learn', en: 'Microsoft Learn' },
@@ -324,46 +315,11 @@ export const certificates: Certificate[] = [
     credentialUrl: 'https://learn.microsoft.com/api/achievements/share/en-us/MrSAPHONDANAICHUEACHAN-3029/BCJT4NZD?sharingId=8C2B9564903662D',
   },
   {
-    id: 'ms-learn-discover-web-apis-power-apps',
-    name: { th: 'Discover and use Web APIs with Power Apps', en: 'Discover and use Web APIs with Power Apps' },
-    issuer: { th: 'Microsoft Learn', en: 'Microsoft Learn' },
-    date: { th: 'มี.ค. 2568', en: 'Mar 2025' },
-    credentialUrl: 'https://learn.microsoft.com/api/achievements/share/en-us/MrSAPHONDANAICHUEACHAN-3029/URHWN8L3?sharingId=8C2B9564903662D',
-  },
-  {
-    id: 'ms-learn-build-power-apps-component',
-    name: { th: 'Build a Power Apps component', en: 'Build a Power Apps component' },
-    issuer: { th: 'Microsoft Learn', en: 'Microsoft Learn' },
-    date: { th: 'มี.ค. 2568', en: 'Mar 2025' },
-    credentialUrl: 'https://learn.microsoft.com/api/achievements/share/en-us/MrSAPHONDANAICHUEACHAN-3029/2DMMQCRV?sharingId=8C2B9564903662D',
-  },
-  {
-    id: 'ms-learn-low-code-traditional-developer',
-    name: { th: 'Understanding Low Code as a Traditional Developer', en: 'Understanding Low Code as a Traditional Developer' },
-    issuer: { th: 'Microsoft Learn', en: 'Microsoft Learn' },
-    date: { th: 'มี.ค. 2568', en: 'Mar 2025' },
-    credentialUrl: 'https://learn.microsoft.com/api/achievements/share/en-us/MrSAPHONDANAICHUEACHAN-3029/9Y333C9U?sharingId=8C2B9564903662D',
-  },
-  {
-    id: 'ms-learn-react-state-events',
-    name: { th: 'React state and events', en: 'React state and events' },
-    issuer: { th: 'Microsoft Learn', en: 'Microsoft Learn' },
-    date: { th: 'มี.ค. 2568', en: 'Mar 2025' },
-    credentialUrl: 'https://learn.microsoft.com/api/achievements/share/en-us/MrSAPHONDANAICHUEACHAN-3029/WZ8P62EN?sharingId=8C2B9564903662D',
-  },
-  {
     id: 'ms-learn-react-data-properties',
     name: { th: 'Working with data and properties in React components', en: 'Working with data and properties in React components' },
     issuer: { th: 'Microsoft Learn', en: 'Microsoft Learn' },
     date: { th: 'มี.ค. 2568', en: 'Mar 2025' },
     credentialUrl: 'https://learn.microsoft.com/api/achievements/share/en-us/MrSAPHONDANAICHUEACHAN-3029/QTMCY73E?sharingId=8C2B9564903662D',
-  },
-  {
-    id: 'ms-learn-get-started-react',
-    name: { th: 'Get started with React', en: 'Get started with React' },
-    issuer: { th: 'Microsoft Learn', en: 'Microsoft Learn' },
-    date: { th: 'มี.ค. 2568', en: 'Mar 2025' },
-    credentialUrl: 'https://learn.microsoft.com/api/achievements/share/en-us/MrSAPHONDANAICHUEACHAN-3029/3RUMJXDH?sharingId=8C2B9564903662D',
   },
 ]
 

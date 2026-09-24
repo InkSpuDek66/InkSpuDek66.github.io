@@ -1,4 +1,4 @@
-import { Mail, MapPin, Phone } from 'lucide-react'
+import { Mail, MapPin } from 'lucide-react'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { useLanguage } from '../context/useLanguage'
 import { useInView } from '../hooks/useInView'
@@ -16,7 +16,7 @@ export default function Contact() {
     { label: 'GitHub', href: personal.github, icon: FaGithub },
     { label: 'LinkedIn', href: personal.linkedin, icon: FaLinkedin },
     { label: personal.email, href: `mailto:${personal.email}`, icon: Mail },
-    { label: personal.phone, href: `tel:${personal.phone.replace(/-/g, '')}`, icon: Phone },
+    // เบอร์โทรไม่โชว์บนเว็บสาธารณะแล้ว (กัน bot เก็บไปใช้) - ยังเก็บไว้ในไฟล์ resume PDF
   ]
 
   return (

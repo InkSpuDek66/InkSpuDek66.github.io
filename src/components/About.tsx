@@ -29,8 +29,14 @@ export default function About() {
         </h2>
 
         {/* คำแนะนำตัวยาวๆ (ย้ายมาจาก Hero.tsx เดิม) ให้ครบตรงนี้แทน เพราะเป็นเนื้อหาระดับ "แนะนำตัว" โดยตรง */}
-        <p className="mb-8 max-w-3xl leading-relaxed text-gray-600 dark:text-gray-400">
+        <p className="mb-5 max-w-3xl leading-relaxed text-gray-600 dark:text-gray-400">
           {personal.intro[lang]}
+        </p>
+
+        {/* แถบเน้นจุดแข็งที่สุด (ประสบการณ์ TA) - ดันขึ้นมาให้เห็นตั้งแต่ section ที่ 2 (จอแรก)
+            ใช้เส้นขอบซ้าย + พื้นหลัง indigo อ่อนๆ ให้สะดุดตากว่าย่อหน้าปกติ */}
+        <p className="mb-8 max-w-3xl rounded-r-md border-l-4 border-indigo-400 bg-indigo-50/70 py-3 pl-4 leading-relaxed font-medium text-slate-700 dark:border-indigo-500 dark:bg-indigo-500/10 dark:text-slate-200">
+          {about.highlight[lang]}
         </p>
 
         {/* grid-cols-3: คอลัมน์ซ้ายกิน 2 ส่วน (md:col-span-2), คอลัมน์ขวากิน 1 ส่วนที่เหลือ */}

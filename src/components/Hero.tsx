@@ -41,6 +41,10 @@ export default function Hero() {
           <p className="mt-2 text-lg font-medium text-indigo-600 dark:text-indigo-400">
             {personal.headline[lang]}
           </p>
+          {/* บรรทัดเป้าหมายงาน (co-op) - เล็ก สีจางกว่า headline ให้ recruiter เห็นทันทีว่าหางานแบบไหน */}
+          <p className="mt-1.5 text-sm text-gray-500 dark:text-gray-400">
+            {personal.availability[lang]}
+          </p>
           {/* ย้ายคำแนะนำตัวยาวๆ (personal.intro) ไปอยู่ใน section "แนะนำตัว" (About.tsx) แทน
               Hero เหลือแค่ชื่อ + headline + ปุ่ม CTA ให้กระชับ ไม่ซ้ำเนื้อหากับ About */}
           <div className="mt-8 flex flex-wrap justify-center gap-3 md:justify-start">
